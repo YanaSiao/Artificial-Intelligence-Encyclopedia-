@@ -30,7 +30,7 @@ The primary divider is whether the agent attempts to map the environment's dynam
 
 ### 5. Advanced Paradigms
 
-#### **Exploration Strategies**
+#### Exploration Strategies
 
 Crucial for efficient learning, especially in sparse environments:
 
@@ -38,7 +38,7 @@ Crucial for efficient learning, especially in sparse environments:
 - **$E^3$:** "Explicit Exploration, Exploitation."
 - **Bayesian RL:** Maintains a distribution over models.
 
-#### **Hierarchical RL (HRL)**
+#### Hierarchical RL (HRL)
 
 Solves the "flat action" problem by treating actions as hierarchies.
 
@@ -46,7 +46,7 @@ Solves the "flat action" problem by treating actions as hierarchies.
 - **Frameworks:** Options, HAMs, MAX-Q.
 - **Sub-goal Discovery:** Automatically identifies "bottleneck" states to create reusable skills.
 
-#### **Transfer Learning**
+#### Transfer Learning
 
 Aims to solve the "learn from scratch" problem by reusing knowledge (Values, Policies, or Samples).
 - **Risk:** **Negative Transfer**, where old knowledge hinders performance on a new, dissimilar task.
