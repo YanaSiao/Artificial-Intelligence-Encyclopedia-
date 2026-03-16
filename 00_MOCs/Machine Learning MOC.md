@@ -5,6 +5,7 @@
 - [[VC Dimension]]: Measuring the capacity of a hypothesis class.
 - [[Online Learning]]: Learning from a stream of data (Worst-case analysis).
 - [[Practical Advice for ML]]: Debugging, error analysis, and iterative development.
+- [[Loss Functions]]
 ## Supervised Learning
 
 ### Linear Models & Optimization
@@ -27,6 +28,7 @@
     - [[Bagging]]: Random Forests.
     - [[Boosting]]: AdaBoost, XGBoost, and Gradient Boosting.
 - [[Evaluation Metrics]]: Precision/Recall, ROC, AUC, and multi-class aggregation.
+- **[[Reranking and Learning to Rank]]**
 
 ## Reinforcement Learning & Control
 

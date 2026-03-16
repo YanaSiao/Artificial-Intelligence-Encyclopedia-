@@ -1,11 +1,11 @@
 ## Foundations & Text Processing 
-- [[History of NLP]]: From WWII Cryptography to Transformers. 
 - [[Text Normalization]]: Tokenization, Lemmatization, Stemming. 
 - [[Regular Expressions (RegEx)]]: Rule-based extraction. 
 - [[Vector Space Representations]]: Sparse models (BoW, TF-IDF, Zipf/Heaps Laws). 
 - [[Feature Extraction from Text]]: Surface, Structural, and Linguistic features. 
 - [[N-grams and Language Modeling]]: Probability and Context (Unigrams vs. Bigrams). 
-## Machine Learning for NLP (Supervised) 
+## Supervised NLP  
+
 - [[Text Classification]]: Binary, Multi-class, Multi-label, Ordinal. 
 - [[Evaluation Metrics]]: Precision, Recall, F1, Confusion Matrix. 
 - [[Linear Classifiers]]: 
@@ -16,8 +16,11 @@
 	- [[Neural Networks (MLP)]] 
 	- [[Decision Trees & Random Forests]] 
 ## Unsupervised NLP 
-- [[Text Clustering]] 
-- [[Topic Modelling]]: LDA, LSA.
+
+- [[Text Search]]: Vocabulary matching and retrieval models.
+	- [[Reranking and Learning to Rank]] 
+- [[Text Clustering]]: Grouping documents via K-Means and Hierarchical methods. 
+- [[Topic Modelling]]: Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA).
 ## Distributed Representations & Sequences
 **Word Embeddings:**
 - [[Word2Vec and Data Embedding]]

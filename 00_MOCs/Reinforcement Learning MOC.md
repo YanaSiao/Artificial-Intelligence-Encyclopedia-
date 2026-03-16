@@ -4,6 +4,7 @@
 - [[Sequential Decision Process]]: History, State, and Action definitions.
 - **Markov Theory**:
 	- [[Markov Processes]]: Stochastic processes, Chapman-Kolmogorov, and state properties. 
+	- [[Markov Chain Dynamics and Classification]]
 	- [[Markov Reward Process]]: Adding rewards and the Bellman Equation for MRPs.
 	- [[Markov Decision Process]]: Adding actions and the Bellman Optimality Equation.
 
@@ -12,12 +13,16 @@
 **[[RL Algorithm Classes]]**: High-level taxonomy of solutions (Model-based vs. Model-free, On-policy vs. Off-policy, Value-based vs. Policy-based).
 ### 2.1 Tabular & Exact Solutions
 
-- [[Dynamic Programming]]: 
-	- [[Policy Iteration]]
-	- [[Value Iteration]]
+- **[[Dynamic Programming]]**: 
+	- [[DP Foundations]]: Assumptions, Complexity, and Policy Evaluation. 
+	- [[Policy Iteration]]: The Evaluation-Improvement loop. 
+	- [[Value Iteration]]: Solving the Optimality Equation. 
+	- [[Linear Programming for MDPs]]: Exact solutions via optimization.
 - **Model-Free Prediction**:
-	- [[Monte Carlo Methods]]
-	- [[Temporal Difference Learning]] (TD)
+	- [[Monte Carlo Methods]] : Learning from complete episodes.
+	- [[Temporal Difference Learning]] (TD): Bootstrapping from experience.
+	- [[MC vs. TD]]: Comparison of bias, variance, and convergence.
+	- [[TD(lambda)]]: Bridging MC and TD with Eligibility Traces.
 - **Model-Free Control**:
 	- [[Q-Learning]] (Off-policy)
 	- [[SARSA]] (On-policy)
