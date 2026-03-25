@@ -40,16 +40,23 @@
     - [[Gradient TD Methods]]: GTD, TDC
 - **Batch (Offline) Methods**:
     - [[Batch RL]]: [[LSTD]], [[LSPI]], [[FQI]]
-- **Policy Search (Foundations)**:  
-	- [[Policy Gradients]]: Definitions, Score Function, & REINFORCE. 
-	- [[Policy Gradient Theorem]]: The math for Actor-Critic. 
-	- [[Natural Policy Gradient]]: Natural Gradient and Fisher Information.
 
 ### 2.3 Policy Search & Policy Gradients
+- [[Trajectory vs. Occupancy Measures]]: The dual views of performance.
 - [[Policy-Based RL & Parametric Policies]]: Advantages and taxonomy.
-- [[Optimization Approaches]]: Black-Box (Evolutionary) vs. White-Box (Gradient).
-- [[Policy Gradient Foundations]]: Score Function, REINFORCE, and G(PO)MDP.
+	- [[Optimization Approaches]]: Black-Box (Evolutionary) vs. White-Box (Gradient).
+	- [[Policy Gradient Foundations]]: Score Function, REINFORCE, and G(PO)MDP.
 - [[Policy Gradient Theorem]]: The fundamental math for Actor-Critic.
+- [[Actor–Critic Policy Gradient]]
 - [[Convergence & Compatible Approximation]]: Conditions for local optima and function compatibility.
 - [[Natural Policy Gradient]]: Natural Gradient, Fisher Information, and NAC.
-- [[Advanced Gradient Methods]]: Off-Policy Policy Gradients and Trust Regions (TRPO/PPO).
+- [[Off-Policy Policy Gradient & Trust Region Methods]]: Off-Policy Policy Gradients.
+- [[Trust Region Methods. TRPO and PPO]] : TRPO and PPO deep dive.
+
+### 2.4 Deep Reinforcement Learning
+
+- [[Deep Q-Networks (DQN)]]: Experience Replay and Target Networks.
+- [[DQN Extensions]]: Double DQN, Dueling Architectures, and Rainbow.
+- [[Deep Actor-Critic]]: A3C, A2C, and Generalized Advantage Estimation (GAE).
+- [[DDPG and TD3]]: Deterministic Policy Gradients and Addressing Overestimation.
+- [[Soft Actor-Critic (SAC)]]: Maximum Entropy RL and the Reparameterization Trick.
