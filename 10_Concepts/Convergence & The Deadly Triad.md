@@ -1,4 +1,4 @@
-#### 1. The Stability Problem
+### The Stability Problem
 
 In the tabular case, most algorithms are guaranteed to converge. In VFA, we lose these guarantees.
 
@@ -7,16 +7,15 @@ In the tabular case, most algorithms are guaranteed to converge. In VFA, we lose
     - **Off-policy (TD):** Can diverge (parameters go to $\infty$).
 - **Control (Optimizing $\pi$):** Often "chatter" or oscillate near a good policy but rarely converge to the exact $\pi^*$.
 
-#### 2. The "Deadly Triad"
+### The "Deadly Triad"
 
-According to the lecture (and Sutton & Barto), divergence is likely to occur when these three components are combined:
+Divergence is likely to occur when these three components are combined:
 
 1. **Function Approximation**: Using $v_w$ instead of a table (generalizing across states).
     
 2. **Bootstrapping**: Using targets that involve existing estimates (TD, DP) instead of actual returns (MC).
     
 3. **Off-policy Learning**: Learning about policy $\pi$ while following policy $b$.
-    
 
 **Why it happens:** In off-policy learning, the state distribution $d_b$ (behavior) doesn't match the distribution $d_\pi$ (target). This can cause the Bellman operator to no longer be a **contraction mapping** in the space of representable functions.
 

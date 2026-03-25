@@ -1,13 +1,3 @@
----
-status: developing
-related: "[[Deep Learning MOC]]"
-Topic:
-  - backpropagation
-  -  activation functions
-  - batch normalization
-  - weight initialization
-  - learning rate
----
 ## The Learning Rate ($\eta$)
 
 ### Theory & Core Concepts
