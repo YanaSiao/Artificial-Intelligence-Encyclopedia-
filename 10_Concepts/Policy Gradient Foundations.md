@@ -1,3 +1,26 @@
+### Introduction
+
+Unlike value-based RL (which computes $Q$ and acts greedily), Policy-Based RL learns a parametric policy $\pi_\theta(a|s)$ directly.
+
+- **Goal**: Maximize $J(\theta) = \mathbb{E}_{s \sim d^\pi, a \sim \pi_\theta} [R(s,a)]$.
+    
+- **Advantages**:
+    
+    - Better convergence properties (no "max" operator oscillation).
+        
+    - Effective in high-dimensional or **continuous action spaces**.
+        
+    - Can learn **stochastic policies** (optimal in partially observable environments).
+        
+
+### The Log-Likelihood Trick (The "Score Function")
+
+We want to calculate $\nabla_\theta J(\theta)$, but the distribution of trajectories depends on $\theta$. To avoid differentiating through the environment dynamics (which are unknown), we use the identity:
+
+$$\nabla_\theta \pi_\theta(a|s) = \pi_\theta(a|s) \frac{\nabla_\theta \pi_\theta(a|s)}{\pi_\theta(a|s)} = \pi_\theta(a|s) \nabla_\theta \log \pi_\theta(a|s)$$
+
+The term $\nabla_\theta \log \pi_\theta(a|s)$ is known as the **Score Function**. It tells us how to "push" the parameters to increase the probability of action $a$ in state $s$.
+
 ### REINFORCE: The Vanilla Policy Gradient
 
 REINFORCE is the simplest "White-Box" policy gradient algorithm. It uses a single Monte Carlo estimate of the total return to update the policy parameters. The core principle is "Trial and Error": it pushes up the probability of trajectories that resulted in high rewards and decreases the probability of those with low rewards.
@@ -12,7 +35,7 @@ REINFORCE is the simplest "White-Box" policy gradient algorithm. It uses a singl
 
 **Pros and Cons**
 
-- **Pros:** It is easy to compute and does not require the Markov property. It can be applied to partially observable MDPs (POMDPs) without modification because it treats the entire trajectory as a single unit.
+- **Pros:** It is easy to compute and does not require the Markov property. It can be applied to partially observable MDPs (POMDPs) without modification because it treats the entire trajectory as a single unit. Unbiased. 
     
 - **Cons:** It suffers from extremely high variance because it uses a single Monte Carlo estimate for the return. This variance grows with the length of the horizon $T$, often leading to slow convergence.    
 
@@ -36,6 +59,8 @@ $$\hat{g}_{G(PO)MDP} = \sum_{t=0}^{T-1} \gamma^t r_t \left( \sum_{l=0}^{t} \nabl
 The primary challenge in policy gradients is the high variance of the stochastic gradient estimates.
 
 **Baselines** To reduce variance without introducing bias, a baseline $b(s)$ can be subtracted from the return. As long as the baseline does not depend on the current action, the estimate remains unbiased because the expectation of the score function $\nabla_\theta \log \pi_\theta(a|s)$ is zero.
+
+$$\nabla_\theta J(\theta) \approx \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(A_t|S_t) (G_t - b(S_t))$$
 
 - **REINFORCE Baseline:** Often a time-independent constant or the average return.
     

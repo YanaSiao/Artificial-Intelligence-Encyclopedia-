@@ -1,4 +1,4 @@
-## 1. Long Short-Term Memory (LSTM)
+## Long Short-Term Memory (LSTM)
 
 Proposed by Hochreiter & Schmidhuber (1997), the LSTM is designed to "remember" information for long periods by using a **Memory Cell** and a set of **logistic gates**.
 ### Architecture & Gates
@@ -50,7 +50,7 @@ An LSTM unit consists of four main components that interact multiplicatively to 
 - **Use Cases**: Complex sequence tasks such as **Machine Translation**, **Speech Recognition**, and **Handwriting Generation** where long-distance context is vital.
 ---
 
-## 2. Gated Recurrent Unit (GRU)
+## Gated Recurrent Unit (GRU)
 
 The GRU is a more recent and simplified version of the LSTM (Cho et al., 2014).
 
@@ -77,7 +77,7 @@ The GRU streamlines the LSTM design by merging states and gates:
 ![[Pasted image 20260215172104.png]]
 ---
 
-## 3. Directionality: Unidirectional vs. Bidirectional
+## Directionality: Unidirectional vs. Bidirectional
 
 Both LSTM and GRU can be implemented in one or two directions depending on the availability of data.
 
@@ -92,7 +92,7 @@ Both LSTM and GRU can be implemented in one or two directions depending on the a
 
 ---
 
-## 4. Pros, Cons, and Comparison
+## Pros, Cons, and Comparison
 
 ### Comparison Table
 
