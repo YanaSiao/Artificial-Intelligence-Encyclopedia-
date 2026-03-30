@@ -22,9 +22,19 @@
 - [[Text Clustering]]: Grouping documents via K-Means and Hierarchical methods. 
 - [[Topic Modelling]]: Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA).
 ## Distributed Representations & Sequences
-**Word Embeddings:**
-- [[Word2Vec and Data Embedding]]
-- [[GloVe / FastText]]
+**Language Modeling (Count-Based)** 
+- [[N-grams and Language Modeling]]: Chain rule, Markov assumption, and Sparsity. 
+- [[Smoothing and Perplexity]]: Perplexity, Laplace, Backoff, and Interpolation. 
+
+**Word Embeddings (Distributed)** 
+- [[Word2Vec and Data Embedding]]: Skip-gram, CBOW, and Vector Space properties. 
+- [[GloVe and FastText]]: Global vectors and sub-word information.
+
+**Statistical Sequential Models** 
+- [[Sequence Classification vs. Sequence Labeling]]: One label per sequence vs. one label per token. 
+- [[Hidden Markov Models (HMM)]]: Generative modeling of states and observations. 
+- [[Conditional Random Fields (CRF)]]: Discriminative structured prediction.
+
 **Sequential Models:**
 - [[Recurrent Neural Networks (RNN)]]
 - [[Gated Architectures (LSTM & GRU)]]

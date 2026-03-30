@@ -8,7 +8,7 @@
 - [[Best Practices. Overfitting and Regularization]] (Early Stopping, Weight Decay, Dropout) 
 ## Unsupervised Models 
 - [[Foundations of Language Modeling]]
-- [[Neural Net Language Model (NNLM)- Bengio et al. (2003)]]
+- [[Neural Net Language Model (NNLM)]]
 - [[Word2Vec and Data Embedding]] 
 - [[Autoencoders and Sparse Autoencoders]]
 ## Sequence & Structural Learning 
