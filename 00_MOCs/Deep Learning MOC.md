@@ -1,6 +1,6 @@
 ## Foundations & Paradigms 
 - [[Introduction to Deep Learning vs Classical ML]] 
-- [[The Perceptron]] 
+- [[Perceptron]] 
 - [[Neural Networks as Universal Approximation Tools]] 
 ## Training & Optimization 
 - [[Backpropagation and Training Algorithms]] 
@@ -50,7 +50,7 @@
 ## The Transformer Revolution
 
 - [[Attention Mechanisms]] (The Bottleneck Problem)
-- **[[The Transformer Architecture]]** (Self-Attention, Positional Encoding, Multi-Head)
+- **[[Transformer Architecture]]** (Self-Attention, Positional Encoding, Multi-Head)
 - **[[Vision Transformers (ViT)]]** (Patch-based Embedding, Attention in CV)
 - **[[Contrastive & Multimodal Learning]]** (CLIP, DINO, ALIGN)
 

@@ -13,7 +13,7 @@
 	- [[Logistic Regression]] (Regularized) 
 	- [[Support Vector Machines (SVM)]] 
 - [[Non-linear Classifiers]]: 
-	- [[Neural Networks (MLP)]] 
+	- [[Perceptron]] 
 	- [[Decision Trees & Random Forests]] 
 ## Unsupervised NLP 
 
@@ -44,8 +44,8 @@
 **The Transformer Era:**
 - [[Attention Mechanisms]]
 - [[Transformer Architecture]]
-- [[BERT]] (Encoder-only)
-- [[GPT-2]] (Decoder-only)
+	- [[BERT (Bidirectional Encoder Representations from Transformers)]] (Encoder-only)
+	- [[GPT (Generative Pre-trained Transformer)]] (Decoder-only)
 
 **Large Language Models (LLMs):**
 - [[Prompt Engineering]] (Zero-shot, Few-shot)
