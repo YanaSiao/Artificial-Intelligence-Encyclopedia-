@@ -19,3 +19,14 @@ I am open to collaborations and sharing these materials! However, by using or sh
 2. **Non-Commercial**: You may not use these materials for commercial purposes.
     
 3. **No AI Training**: You do **not** have permission to use the contents of this vault to train, fine-tune, or validate Large Language Models (LLMs) or any other machine learning algorithms.
+
+
+If this repository helps you, consider:
+- starring it ⭐
+- sharing it with friends
+
+### ⚠️ Disclaimer
+
+This repository is **not an official resource** of Politecnico di Milano.
+
+Some materials may reference or include third-party content used strictly for educational purposes. All rights remain with their respective authors. If you are a rights holder and believe content should be removed, please get in touch.
