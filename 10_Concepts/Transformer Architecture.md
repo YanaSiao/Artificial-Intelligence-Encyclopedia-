@@ -20,7 +20,7 @@ The Transformer's central idea is **[[Self-Attention (Intra-Attention)]]**: ever
 |**FFNN**|Adds non-linearity and allows the model to learn complex patterns at each position.|
 |**Residuals/Norm**|Ensures the model can be stacked deep (12+ layers) without losing signal.|
 
-## 1. The Input Module
+## The Input Module
 
 Since Transformers process all words in a sequence simultaneously, they have no inherent sense of word order (unlike RNNs).
 
@@ -32,7 +32,7 @@ Since Transformers process all words in a sequence simultaneously, they have no 
 
 ---
 
-## 2. The Transformer Stack
+## The Transformer Stack
 
 The model is composed of a stack of $N$ identical layers (usually $N=6$ or $N=12$).
 
@@ -44,7 +44,7 @@ The model is composed of a stack of $N$ identical layers (usually $N=6$ or $N=12
 
 ---
 
-## 3. Inside the Transformer Block
+## Inside the Transformer Block
 
 Each block is divided into two main sub-layers, wrapped in **Residual Connections** and **Layer Normalization**.
 
@@ -68,7 +68,7 @@ Each block is divided into two main sub-layers, wrapped in **Residual Connection
 
 ---
 
-## 4. The Output Module
+## The Output Module
 
 The final representation from the top of the Decoder stack is converted back into words.
 
@@ -77,7 +77,7 @@ The final representation from the top of the Decoder stack is converted back int
 - **Softmax:** Converts the scores into a probability distribution, allowing the model to pick the most likely next word.
 ---
 
-### Pros, Cons, and the Bottleneck
+## Pros, Cons, and the Bottleneck
 
 |**Pros**|**Cons**|
 |---|---|
@@ -85,13 +85,23 @@ The final representation from the top of the Decoder stack is converted back int
 |**Global Context:** Path length between any two tokens is $O(1)$.|**High Memory Usage:** Storing the $N \times N$ attention matrix for long sequences is expensive.|
 |**State-of-the-art:** Foundation for BERT, GPT, and modern LLMs.|**Quadratic Complexity:** The main bottleneck.|
 
-#### The Bottleneck: Quadratic Complexity $O(n^2)$
+### The Bottleneck: Quadratic Complexity $O(n^2)$
 
 The primary bottleneck is the **Self-Attention Matrix**. Because every word attends to every other word, a sequence of length $n$ requires $n^2$ calculations.
 
 - If you double the sentence length, the computational cost and memory requirement **quadruple**.
     
 - This is why many models (like BERT) have a maximum context window of 512 tokens.
+
+### Layers vs. Logic: The 96-Layer Bottleneck
+
+It is a common misconception that more layers equal more logical "steps." While a 96-layer model (like GPT-3) is incredibly deep, it is fundamentally a **parallel processor** within a single forward pass.
+
+- **The "One-Shot" Forward Pass**: When the model generates a single token, the data moves through all 96 layers. However, each layer is looking at the _same_ snapshot of the input context. Layer 50 can see what Layer 49 produced, but it cannot "wait" for the result of a logical calculation that hasn't been written down yet.
+    
+- **Feature Depth vs. Logical Depth**: The layers are great at extracting high-level abstract features (e.g., "this sentence is sarcastic" or "this is a coding problem"). But they cannot perform sequential reasoning—like solving an equation—within that single pass because the answer to "Step 1" needs to be physically present in the input for the model to "see" it and work on "Step 2."
+    
+- **The Autoregressive Constraint**: Transformers are autoregressive. They can only perform **one unit of sequential logic per token**. To perform 10 steps of logic, the model must generate at least 10 tokens. This is why Chain-of-Thought (CoT) is so effective; it essentially "borrows" the token generation process to give the layers new, intermediate data to chew on.
 ---
 _See relevant notes on architectures:_
 - [[BERT (Bidirectional Encoder Representations from Transformers)]]

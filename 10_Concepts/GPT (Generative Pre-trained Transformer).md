@@ -68,7 +68,7 @@ GPT is the master of **open-ended generation**. To generate text:
     
 - **GPT-2:** Demonstrated "Zero-shot" capabilities—learning tasks without specific training.
     
-- **GPT-3:** Proved that scaling (more data, more parameters) leads to emergent behaviors (reasoning, coding).
+- **[[GPT-3]]:** Proved that scaling (more data, more parameters) leads to emergent behaviors (reasoning, coding).
     
 - **InstructGPT / ChatGPT:** Fine-tuned using **RLHF ([[Reinforcement Learning from Human Feedback]])** to align the model with human instructions and safety.
 
