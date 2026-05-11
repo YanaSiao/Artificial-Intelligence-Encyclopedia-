@@ -24,6 +24,7 @@
 - [[Lightweight Architectures]]:
     - [[MobileNet]]: Depthwise separable convolutions.
     - [[SqueezeNet]]: Fire modules and parameter reduction.
+    - [[EfficientNet]]
 - [[Approximate Computing]]:
     - [[Quantization]]: Moving from FP32 to INT8/Float16.
     - [[Pruning & Sparsity]]: Removing redundant weights.

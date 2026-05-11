@@ -47,10 +47,22 @@
 	- [[BERT (Bidirectional Encoder Representations from Transformers)]] (Encoder-only)
 	- [[GPT (Generative Pre-trained Transformer)]] (Decoder-only)
 
-**Large Language Models (LLMs):**
+**[[Large Language Models (LLMs)]]:**
 - [[Prompt Engineering]] (Zero-shot, Few-shot)
 - [[Chain-of-Thought Prompting]]
+- [[LLM Problems]]
 - [[RLHF & Fine-tuning]]
+
+**Deployment**:
+- [[Open Source models]]
+- [[LLM Inference Optimization]]
+- [[LLM Architecture Improvement]]
+- [[LLM Training Optimisation]]
+- [[Mixture of Experts MoE]]
+
+- [[Agentic AI & Augmented Reasoning]]
+- [[Speech Detection, Generation & Dialog]]
+- [[Evaluation, Safety & Ethics]]
 
 ## Common NLP Tasks
 - [[Sentiment Analysis]]
