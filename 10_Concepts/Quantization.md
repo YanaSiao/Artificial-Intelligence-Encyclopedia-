@@ -24,9 +24,22 @@ The transition to lower precision always introduces **quantization noise**, whic
 
 1. **Performance**: Lower-bit operations (like INT8) allow the processor to perform more operations per second (high throughput).
     
-2. **Energy Consumption**: Reducing the word-length minimizes the energy spent on "data movement" between the memory and the ALU.
+2. **Memory Footprint**: A 4x reduction in bit-width (from 32 to 8) results in a 4x reduction in the memory required to store the model.
+	
+3. **Energy Consumption**: Reducing the word-length minimizes the energy spent on "data movement" between the memory and the ALU.
+#### **The Hardware Energy Scaling Rules**
+
+- **1 FP32 Multiply** $\rightarrow$ **1 INT8 Multiply** = Saves **18.5x** energy.
     
-3. **Memory Footprint**: A 4x reduction in bit-width (from 32 to 8) results in a 4x reduction in the memory required to store the model.
+- **1 FP32 Add** $\rightarrow$ **1 INT8 Add** = Saves **30x** energy.
+
+#### **The Formula**
+
+If a network layer requires $X$ multiplications and $Y$ additions:
+
+$$\text{Baseline Energy (FP32)} = (X \cdot E_{\text{FP32\_Mult}}) + (Y \cdot E_{\text{FP32\_Add}})$$
+
+$$\text{Quantized Energy (INT8)} = \left( \frac{X \cdot E_{\text{FP32\_Mult}}}{18.5} \right) + \left( \frac{Y \cdot E_{\text{FP32\_Add}}}{30} \right)$$
 
 ## Extreme Quantization: Binary and Ternary
 
@@ -91,7 +104,7 @@ The effect of quantization is **not uniform** across the network. Some layers ar
 
 - **The Bottleneck Layers**: The **First Layer** (which processes raw sensor data) and the **Last Layer** (which produces the final probability scores) are the most critical. Quantizing these to very low bits (like 4-bit) often causes a total collapse in accuracy.
     
-- **Depthwise Convolutions**: In architectures like MobileNet, these layers have fewer parameters and are often more sensitive to quantization than standard "dense" convolutions.
+- **Depthwise Convolutions**: In architectures like [[MobileNet 16k (2017)|MobileNet]], these layers have fewer parameters and are often more sensitive to quantization than standard "dense" convolutions.
     
 - **Impact**: Consequently, we often use **Mixed Precision**, keeping the sensitive outer layers at INT8 and aggressive intermediate layers at INT4.
 

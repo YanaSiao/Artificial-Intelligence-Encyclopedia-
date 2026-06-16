@@ -38,4 +38,4 @@ The evolution of these architectures is generally categorized into three major m
     
 2. **[[MobileNet 16k (2017)]] (2017)**: Replaced standard convolutions with Depthwise Separable Convolutions.
     
-3. **[[EfficientNet]] (2019)**: Introduced "Compound Scaling" to elegantly balance depth, width, and resolution.
+3. **[[EfficientNet (2019)]] (2019)**: Introduced "Compound Scaling" to elegantly balance depth, width, and resolution.
