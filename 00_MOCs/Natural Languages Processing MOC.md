@@ -62,6 +62,7 @@
 
 - [[Agentic AI & Augmented Reasoning]]
 - [[Speech Detection, Generation & Dialog]]
+- [[Speech Processing]] (STT and TTS)
 - [[Evaluation, Safety & Ethics]]
 
 ## Common NLP Tasks
@@ -70,4 +71,3 @@
 - [[Machine Translation]]
 - [[Text Summarization]]
 - [[Question Answering (QA)]]
-- [[Speech Processing]] (STT and TTS)

@@ -22,9 +22,9 @@
 ## Model Optimization & Lightweight Architectures
 
 - [[Lightweight Architectures]]:
-    - [[MobileNet]]: Depthwise separable convolutions.
-    - [[SqueezeNet]]: Fire modules and parameter reduction.
-    - [[EfficientNet]]
+    - MobileNet: Depthwise separable convolutions.
+    - SqueezeNet: Fire modules and parameter reduction.
+    - EfficientNet: Elegantly balanced depth, width, and resolution.
 - [[Approximate Computing]]:
     - [[Quantization]]: Moving from FP32 to INT8/Float16.
     - [[Pruning & Sparsity]]: Removing redundant weights.
@@ -32,6 +32,6 @@
 
 ## Advanced Edge Paradigms
 
-- [[On-device Learning]]: Training on the edge (Fine-tuning vs. Full Training).
-- [[Continuous & Personalized Learning]]: Adapting to user data over time.
+- [[On-Device Learning (ODL)]]: Training on the edge (Fine-tuning vs. Full Training).
+	- [[Distributed & Collaborative Edge Schemes]]
 - [[Edge AI Ethics & Privacy]]: Local processing vs. Cloud privacy.
