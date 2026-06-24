@@ -1,27 +1,85 @@
-### MAC Count for a 3x3 Filter at One Spatial Position
 
-To calculate the exact number of Multiply-Accumulate (MAC) operations required to apply a filter to a single spatial coordinate, you must account for the **channel depth ($C$)** of the incoming feature map.
+## Expanding to Full Layer Complexity (Total MAC Counts)
 
-A single convolutional filter is a 3D tensor of shape $R \times S \times C$ (where $R, S$ are spatial filter dimensions, and $C$ is input channels).
+To find the total computational cost of an entire layer, you must scale the cost of a single spatial position by the total number of elements in the output feature map and the total number of filters deployed. 
 
-- **Case A: Single-Channel Input ($C = 1$)**
-    
-    - The filter has exactly $3 \times 3 \times 1 = 9$ weights.
-        
-    - Applying this to one spatial position requires 9 scalar multiplications and 8 additions to combine the terms into a single scalar output.
-        
-    - Because 1 MAC incorporates 1 multiplication and 1 accumulation step, this requires exactly **9 MAC operations**.
-        
-- **Case B: Multi-Channel Input ($C > 1$)**
-    
-    - The filter has $3 \times 3 \times C = 9C$ weights.
-        
-    - The operation performs element-wise multiplications across all 9 spatial points across all $C$ channels simultaneously, accumulating them into a single value.
-        
-    - **Formula for one spatial position:**
-        
-        $$\text{MACs} = R \times S \times C = 3 \times 3 \times C = \mathbf{9C \text{ MACs}}$$
-        
+Let the output feature map spatial dimensions be $E \times F$ (Height $\times$ Width) and the number of output channels (number of distinct filters) be $K$.
+
+---
+
+### **1. Standard 2D Convolution (Images / Static Vision)**
+In a standard 2D convolutional layer, a bank of $K$ filters moves across the spatial dimensions of the input tensor to generate $K$ output channels.
+
+* **Input Shape:** $H \times W \times C$
+* **Filter Shape:** $R \times S \times C$ (per filter, with $K$ total filters)
+* **Output Shape:** $E \times F \times K$
+
+
+
+$$\text{Total 2D Conv MACs} = E \times F \times R \times S \times C \times K$$
+
+> **Core Intuition:**  
+> * $\text{Total Outputs Generated} = E \times F \times K$
+> * $\text{Cost per Output Element} = R \times S \times C$
+> * Multiplying them yields the complete layer cost.
+
+---
+
+### **2. 3D Convolution (Video / Spatiotemporal Data)**
+For video streams or 3D medical imaging (like CT scans), data possesses an extra temporal or depth dimension ($D$). The filters become 3D cubes ($T \times R \times S$) moving across time and space.
+
+* **Input Shape:** $D \times H \times W \times C$ (where $D$ is number of frames/depth slices)
+* **Filter Shape:** $T \times R \times S \times C$ (where $T$ is the temporal/depth span of the filter)
+* **Output Shape:** $G \times E \times F \times K$ (where $G$ is the output temporal/depth dimension)
+
+$$\text{Total 3D Conv MACs} = G \times E \times F \times T \times R \times S \times C \times K$$
+
+---
+
+### **3. 1D Convolution (Audio / Time-Series Signals)**
+For 1D signals such as raw audio waveforms, ECG data, or vibration sensor readings, the spatial width dimension disappears, leaving only a single temporal length dimension ($L$).
+
+* **Input Shape:** $L \times C$ (Length $\times$ Channels)
+* **Filter Shape:** $R \times C$ (Filter Length $\times$ Channels, with $K$ total filters)
+* **Output Shape:** $E \times K$ (Output Length $\times$ Output Channels)
+
+$$\text{Total 1D Conv MACs} = E \times R \times C \times K$$
+
+---
+
+### **4. Depthwise Separable Convolution (MobileNet Optimized)**
+MobileNet splits a standard 2D convolution into two distinct, ultra-efficient operations to bypass the heavy $C \times K$ multiplication penalty:
+
+#### **Step A: Depthwise Convolution (Spatial Filtering)**
+Each channel is filtered independently by its own dedicated spatial filter. No cross-channel accumulation occurs ($K = 1$ per channel).
+* **Input Shape:** $H \times W \times C$
+* **Filter Shape:** $R \times S \times 1$ (repeated across $C$ independent channels)
+* **Output Shape:** $E \times F \times C$
+
+$$\text{Depthwise MACs} = E \times F \times R \times S \times C$$
+
+#### **Step B: Pointwise Convolution (Channel Mixing)**
+A standard convolution utilizing $1 \times 1$ spatial filters maps the $C$ channels into $K$ target output channels.
+* **Filter Shape:** $1 \times 1 \times C \times K$
+* **Output Shape:** $E \times F \times K$
+
+$$\text{Pointwise MACs} = E \times F \times 1 \times 1 \times C \times K$$
+
+#### **Total Layer Cost Comparison**
+$$\text{Total Depthwise Separable MACs} = (E \times F \times R \times S \times C) + (E \times F \times C \times K) = E \times F \times C \times (R \times S + K)$$
+
+---
+
+### **Summary Table: MAC Equations At-a-Glance**
+
+| Layer Type                   | Input Type         | Mathematical MAC Formula                                           |
+| :--------------------------- | :----------------- | :----------------------------------------------------------------- |
+| **1D Convolution**           | Audio, IMU signals | $E \times R \times C \times K$                                     |
+| **2D Convolution**           | Standard Images    | $E \times F \times R \times S \times C \times K$                   |
+| **3D Convolution**           | Videos, CT Scams   | $G \times E \times F \times T \times R \times S \times C \times K$ |
+| **Depthwise Separable**      | MobileNet Layer    | $E \times F \times C \times (R \times S + K)$                      |
+| **Fully Connected (Linear)** | Flattened Vector   | $I \times O$ *(where $I = \text{Inputs}, O = \text{Outputs})$*     |
+
 
 ### Translating Hardware Actions into Complexity Metrics
 
